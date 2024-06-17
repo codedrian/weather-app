@@ -9,3 +9,5 @@
 
 - **Frontend:** Vue.js 3 (Composition API), Tailwind CSS
 - **API:** [Weather API](https://www.weatherapi.com/)
+
+<!-- TODO: 1. Emit the region ID  -->
