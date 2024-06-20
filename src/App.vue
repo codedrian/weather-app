@@ -10,7 +10,9 @@ function displayForecast(data) {
 </script>
 <template>
 	<SearchRegion @place-data="displayForecast"/>
-	<div v-for="place in places">
-		<WeatherCard :place="place" />
+	<div class="grid grid-cols-2 gap-4">
+		<div v-for="(place, index) in places" :key="index">
+			<WeatherCard :place="place" />
+		</div>
 	</div>
 </template>
