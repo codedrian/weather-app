@@ -14,17 +14,16 @@ function handleSearch() {
 			if (searchTerm.value.query != '') {
 				const response = await fetch(`http://api.weatherapi.com/v1/search.json?key=3a9fbba54bf048308a652424241306&q=${searchTerm.value.query}`)
 				const data = await response.json();
-				console.log(data)
 				searchTerm.value.response = data;
 			}
 	}, 500);
 }
-const places = ref([])
-/* const emit = defineEmits(['submit']) */
+
+const emit = defineEmits(['place-data'])
 async function searchForecast(id) {
 	const response = await fetch(`http://api.weatherapi.com/v1/forecast.json?key=3a9fbba54bf048308a652424241306&q=id:${id}&days=3&aqi=no&alerts=no`)
 	const data = await response.json();
-	console.log(data);
+	emit('place-data', data);
 	searchTerm.value.query = "";
 	searchTerm.value.response = null;
 }

@@ -1,13 +1,16 @@
 <script setup>
 import { ref } from 'vue'
 import SearchRegion from './assets/components/SearchRegion.vue'
-import DisplayForecast from './assets/components/DisplayForecast.vue'
-const regionId = ref();
-function displayForecast(id) {
-	regionId.value = id;
+import WeatherCard from './assets/components/WeatherCard.vue'
+const places = ref([]);
+function displayForecast(data) {
+	places.value.push(data);
 }
+
 </script>
 <template>
-	<SearchRegion @submit="displayForecast"/>
-	<DisplayForecast :regionId="regionId"/>
+	<SearchRegion @place-data="displayForecast"/>
+	<div v-for="place in places">
+		<WeatherCard :place="place" />
+	</div>
 </template>
