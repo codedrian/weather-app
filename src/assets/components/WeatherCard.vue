@@ -23,7 +23,7 @@ defineProps({
     <!-- current weather -->
     <div class="text-center flex-1">
       <img :src="place.current.condition.icon" alt="icon" width="200" class="mx-auto -mb-10" />
-      <h1 class="text-9xl mb-2">{{ place.current.temp_c }}</h1>
+      <h1 class="text-9xl mb-2">{{ place.current.temp_c }}&deg</h1>
       <p class="text-2xl">{{ place.current.condition.text }}</p>
     </div>
 
