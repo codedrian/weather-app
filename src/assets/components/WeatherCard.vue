@@ -1,5 +1,7 @@
 <script setup>
 import BorderLine from './BorderLine.vue'
+import WeatherForecastDay from './WeatherForecastDay.vue'
+import WeatherInfo from "./WeatherInfo.vue";
 defineProps({
     place: Object
 
@@ -16,7 +18,7 @@ defineProps({
       </div>
       <div class="flex items-center justify-center gap-2">
         <i class="fa-solid fa-clock"></i>
-        <h1 class="text-3xl">{{ place.location.localtime}}</h1>
+        <h1 class="text-3xl">{{ new Date(place.location.localtime).getHours() }}:{{ new Date(place.location.localtime).getMinutes() }}</h1>
       </div>
     </div>
 
@@ -24,19 +26,19 @@ defineProps({
     <div class="text-center flex-1">
       <img :src="place.current.condition.icon" alt="icon" width="200" class="mx-auto -mb-10" />
       <h1 class="text-9xl mb-2">{{ place.current.temp_c }}&deg</h1>
-      <p class="text-2xl">{{ place.current.condition.text }}</p>
+      <p class="text-2xl">{{ (place.current.condition.text) }}</p>
     </div>
 
     <BorderLine />
 
     <!-- forecast -->
-    <div>
-      <!-- Weather daily forecast component goes here -->
+    <div v-for="(day, index) in place.forecast.forecastday" id="index">
+      <WeatherForecastDay :day="day"/>
     </div>
 
     <!-- info -->
     <div>
-      <!-- Weather info component goes here -->
+      <WeatherInfo :info="place.current"/>
     </div>
 
     <!-- forecast btn -->
