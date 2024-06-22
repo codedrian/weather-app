@@ -1,4 +1,4 @@
-# weather-app (WIP 🚧)
+# weather-app
 
 #### Features 🌦️
 - **Current Weather:** Get real-time weather conditions for your current location or any city in the world.
