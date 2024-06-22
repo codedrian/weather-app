@@ -40,7 +40,8 @@ const isVisible = ref(false);
     <!-- info -->
     <div>
         <Transition name="weather-info-fade">
-            <WeatherInfo :info="place.current" v-show="isVisible" @close-weather-info="() => isVisible = false"/>
+            <WeatherInfo :info="place.current" v-show="isVisible" @close-weather-info="() => isVisible = false"
+                         @delete-weather-card="$emit('delete-weather-card', place.location.name)"/>
         </Transition>
     </div>
 
