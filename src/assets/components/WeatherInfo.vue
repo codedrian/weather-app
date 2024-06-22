@@ -5,12 +5,10 @@ defineProps({
 </script>
 
 <template>
-  <div
-      class="absolute bg-white/80 backdrop-blur-sm text-slate-900 inset-x-0 bottom-0 rounded-t-lg p-8"
-  >
+    <div class="absolute bg-white/80 backdrop-blur-sm text-slate-900 inset-x-0 bottom-0 rounded-t-lg p-8">
     <!-- Close button -->
     <div class="flex justify-end mb-10">
-      <button class="p-1">
+      <button class="p-1" @click="$emit('close-weather-info')">
         <i class="fa-solid fa-xmark text-xl"></i>
       </button>
     </div>
