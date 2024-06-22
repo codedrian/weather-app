@@ -56,7 +56,7 @@ defineProps({
     <!-- Last update and delete -->
     <div class="flex justify-between items-center">
       <h3 class="text-slate-900/50">last update: {{ new Date(info.last_updated).toLocaleDateString() }}</h3>
-      <button>
+      <button @click="$emit('delete-weather-card')">
         <i class="fa-solid fa-trash"></i>
       </button>
     </div>
