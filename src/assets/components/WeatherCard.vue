@@ -2,11 +2,11 @@
 import BorderLine from './BorderLine.vue'
 import WeatherForecastDay from './WeatherForecastDay.vue'
 import WeatherInfo from "./WeatherInfo.vue";
+import {ref} from "vue";
 defineProps({
     place: Object
-
 })
-
+const isVisible = ref(false);
 </script>
 <template>
   <div class="text-white p-10 rounded-lg shadow-lg gap-6 mb-6 relative overflow-hidden bg-blue-500">
@@ -38,12 +38,28 @@ defineProps({
 
     <!-- info -->
     <div>
-      <WeatherInfo :info="place.current"/>
+        <Transition name="weather-info-fade">
+            <WeatherInfo :info="place.current" v-show="isVisible" @close-weather-info="() => isVisible = false"/>
+        </Transition>
     </div>
 
     <!-- forecast btn -->
     <div class="flex justify-end items-center gap-1 mt-10">
-      <button>More <i class="fa-solid fa-arrow-right text-sm -mb-px"></i></button>
+      <button @click="() => isVisible = true">More <i class="fa-solid fa-arrow-right text-sm -mb-px"></i></button>
     </div>
   </div>
 </template>
+<style scoped>
+.weather-info-fade-enter-active {
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.weather-info-fade-leave-active {
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+
+
+
+</style>
